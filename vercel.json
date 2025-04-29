@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "devCommand": "gunicorn app:app --config gunicorn_config.py",
+    "builds": [
+      {
+        "src": "main.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "app.py"
+      }
+    ],
+    "env": {
+      "PYTHONPATH": ".",
+      "APP_MODULE": "app:app"
+    }
+  }
+  
